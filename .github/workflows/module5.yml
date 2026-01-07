@@ -27,8 +27,7 @@ jobs:
       - name: Install dependencies pm2 -g
         run: npm install pm2 -g
       - name: pm2 start
-        run: pm2 start dist/main.js
-
+        run: pm2 start src/index.js --name "api-server"
       - name: Build project
         run: npm run build
 
