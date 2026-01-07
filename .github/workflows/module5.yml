@@ -41,8 +41,9 @@ jobs:
       - name: Download build artifact
         uses: actions/download-artifact@v4
         with:
-          name: api-build
-          path: dist/
+      - name: api-build
+        path: dist/
+
       - name: install dependencices pm2
         run: sudo npm install pm2 -g
       - name: Start API
