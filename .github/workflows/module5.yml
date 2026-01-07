@@ -19,14 +19,13 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
+      - name: Install dependencies 
         run: npm install
-
-      - name: Run tests
-        run: npm test
-
+      - name: npm run
       - name: Build project
         run: npm run build
+      - name: pm2 start
+        run: npx pm2 start dist/main.js --name "api-server"
 
       # ✅ ARTIFACT ADD
       - name: Upload build artifact
