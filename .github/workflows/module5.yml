@@ -2,26 +2,37 @@ name: Module 5 Assignment
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
+
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Set up node
-        uses: actions/setup-node@v3
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
       - name: Install dependencies
         run: npm install
-      - name: npm run
-        run: npm run 
-      - name: pm2 install
-        run: npm install pm2 -g
-      - name: pm2 start
-        run: pm2 start src/server.js --name api
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build project
+        run: npm run build
+
+      # ✅ ARTIFACT ADD
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-build
+          path: dist/
 
       
