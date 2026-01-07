@@ -24,12 +24,9 @@ jobs:
  
       - name: npm run test 
         run: npm run
-      - name: Install dependencies pm2 -g
-        run: npm install pm2 -g
-      - name: pm2 start
-        run: pm2 start src/index.js --name "api-server"
-      - name: Build project
+      - name: npm run build
         run: npm run build
+      - 
 
       # ✅ ARTIFACT ADD
       - name: Upload build artifact
