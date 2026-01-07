@@ -38,8 +38,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: install dependencices pm2
+      - name: Install PM2 globally
         run: sudo npm install pm2 -g
+
       - name: Start API
         run: |
           pm2 restart api || pm2 start dist/server.js --name api
