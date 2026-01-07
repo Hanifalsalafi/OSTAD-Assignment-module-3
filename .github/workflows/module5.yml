@@ -32,16 +32,4 @@ jobs:
         with:
           name: api-build
           path: dist/
-  deploy:
-    name: Deploy to Server
-    runs-on: self-hosted
-    needs: test
-
-    steps:
-      - name: Download build artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: api-build
-          path: .
-      - name: install dependencies
-        run: sudo apt-get install -y nginx
+  
